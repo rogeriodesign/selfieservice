@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cl_inside_mall_content"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/activity_horizontal_margin"
+    tools:visibility="visible">
+
+    <ImageView
+        android:id="@+id/iv_image"
+        android:layout_width="101dp"
+        android:layout_height="101dp"
+        android:contentDescription="Logo"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_default_background"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:singleLine="false"
+        android:textAppearance="?attr/textAppearanceListItem"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/iv_image"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Conteúdo que foi gravado na nota em duas linhas" />
+
+
+    <LinearLayout
+        android:id="@+id/ll_options"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/iv_image"
+        app:layout_constraintTop_toBottomOf="@id/tv_title">
+
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/barra_total"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:background="@color/divider"
+        android:lineSpacingMultiplier="0.7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/iv_image"
+        app:layout_constraintTop_toBottomOf="@id/ll_options" />
+
+    <TextView
+        android:id="@+id/tv_total"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:singleLine="false"
+        android:textAppearance="?attr/textAppearanceListItemSecondary"
+        app:layout_constraintStart_toEndOf="@id/iv_image"
+        app:layout_constraintTop_toBottomOf="@id/barra_total"
+        android:text="@string/title_total" />
+
+    <TextView
+        android:id="@+id/tv_total_value"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:singleLine="false"
+        android:textAppearance="?attr/textAppearanceListItemSecondary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_total"
+        app:layout_constraintTop_toTopOf="@id/tv_total"
+        tools:text="R$00,00" />
+
+    <Button
+        android:id="@+id/bt_edit"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:text="@string/btn_edit"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/iv_image"
+        app:layout_constraintTop_toBottomOf="@id/tv_total" />
+
+    <Button
+        android:id="@+id/bt_remove"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:text="@string/btn_remove"
+        android:textAllCaps="false"
+        android:textColor="@color/gray"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/bt_edit"
+        app:layout_constraintTop_toBottomOf="@id/tv_total" />
+
+    <TextView
+        android:id="@+id/tv_quantity"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/circle_background"
+        android:textColor="@color/white"
+        tools:text="20"
+        android:gravity="center_vertical|center_horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/iv_image"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_image"/>
+
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:background="@color/divider"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bt_remove" />
+</androidx.constraintlayout.widget.ConstraintLayout>

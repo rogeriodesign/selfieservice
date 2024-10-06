@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="40dp">
+
+        <LinearLayout
+            android:id="@+id/ll_container_merchant"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_resume"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:drawablePadding="20dp"
+            android:text="@string/title_values_resume"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ll_container_merchant" />
+
+        <TextView
+            android:id="@+id/tv_subtotal_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:drawablePadding="20dp"
+            android:text="@string/title_subtotal"
+            android:textAppearance="?attr/textAppearanceListItemSecondary"
+            android:textSize="16sp"
+            android:visibility="gone"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_resume"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/tv_subtotal_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:drawablePadding="20dp"
+            android:textAppearance="?attr/textAppearanceListItemSecondary"
+            android:textSize="16sp"
+            android:visibility="gone"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_subtotal_title"
+            tools:text="R$00,00"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/tv_delivery_fee_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:drawablePadding="20dp"
+            android:text="@string/title_delivery_tax"
+            android:textAppearance="?attr/textAppearanceListItemSecondary"
+            android:textColor="@color/text_category"
+            android:textSize="16sp"
+            android:visibility="gone"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_subtotal_title"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/tv_delivery_fee_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:drawablePadding="20dp"
+            android:textAppearance="?attr/textAppearanceListItemSecondary"
+            android:textColor="@color/text_category"
+            android:textSize="16sp"
+            android:visibility="gone"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_delivery_fee_title"
+            tools:text="R$0,00"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/tv_discount_coupon_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:drawablePadding="20dp"
+            android:text="@string/title_coupon"
+            android:textAppearance="?attr/textAppearanceListItemSecondary"
+            android:textColor="@color/text_category"
+            android:textSize="16sp"
+            android:visibility="gone"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_delivery_fee_value"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/tv_discount_coupon_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:drawablePadding="20dp"
+            android:textAppearance="?attr/textAppearanceListItemSecondary"
+            android:textColor="@color/green"
+            android:textSize="16sp"
+            android:visibility="gone"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_discount_coupon_title"
+            tools:text="-R$0,00"
+            tools:visibility="visible" />
+
+        <View
+            android:id="@+id/v_divider_total"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:background="@color/divider"
+            android:lineSpacingMultiplier="0.7"
+            android:visibility="gone"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_discount_coupon_title"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/tv_total_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:text="@string/title_total"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/v_divider_total" />
+
+        <TextView
+            android:id="@+id/tv_total_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:textSize="16sp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_total_title"
+            tools:text="R$ 0,00" />
+
+
+        <TextView
+            android:id="@+id/tv_title_payment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="38dp"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:drawablePadding="20dp"
+            android:text="@string/title_payment"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_total_value" />
+
+        <LinearLayout
+            android:id="@+id/ll_payment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_title_payment">
+
+            <TextView
+                android:id="@+id/tv_payment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:drawableStart="@drawable/ic_cred_card"
+                android:drawablePadding="20dp"
+                android:text="@string/label_cred_card"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@color/divider"
+                android:lineSpacingMultiplier="0.7" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_auto_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:drawablePadding="20dp"
+            android:text="@string/title_self_attendance"
+            android:textAppearance="?attr/textAppearanceListItemSecondary"
+            android:textColor="@color/text_category"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ll_payment" />
+        <TextView
+            android:id="@+id/tv_mall_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:drawablePadding="20dp"
+            tools:text="Grand Plaza Shopping"
+            android:textAppearance="?attr/textAppearanceListItem"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_auto_title" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

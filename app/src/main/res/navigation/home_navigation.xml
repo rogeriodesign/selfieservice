@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_navigation"
+    app:startDestination="@+id/navigation_merchant_menu">
+
+    <fragment
+        android:id="@+id/navigation_merchant_menu"
+        android:name="br.com.acbr.acbrselfservice.ui.product_list.MenuFragment"
+        android:label="@string/title_merchant_menu"
+        tools:layout="@layout/fragment_merchant_menu" >
+        <action
+            android:id="@+id/action_navigation_merchant_menu_to_navigation_product"
+            app:destination="@id/navigation_product" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_product"
+        android:name="br.com.acbr.acbrselfservice.ui.product.ProductFragment"
+        android:label="@string/title_product"
+        tools:layout="@layout/fragment_product" >
+        <action
+            android:id="@+id/action_navigation_product_to_navigation_cart"
+            app:destination="@id/navigation_cart"
+            app:popUpTo="@id/navigation_merchant_menu" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_cart"
+        android:name="br.com.acbr.acbrselfservice.ui.cart.CartFragment"
+        android:label="@string/title_cart"
+        tools:layout="@layout/fragment_cart" >
+        <action
+            android:id="@+id/action_navigation_cart_to_navigation_product"
+            app:destination="@id/navigation_product" />
+        <action
+            android:id="@+id/action_navigation_cart_to_navigation_resume"
+            app:destination="@id/navigation_resume" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/navigation_resume"
+        android:name="br.com.acbr.acbrselfservice.ui.checkout.resume.ResumeFragment"
+        android:label="@string/title_resume"
+        tools:layout="@layout/fragment_resume" >
+        <action
+            android:id="@+id/action_navigation_resume_to_navigation_order"
+            app:destination="@id/navigation_order"
+            app:popUpTo="@id/navigation_merchant_menu" />
+        <action
+            android:id="@+id/action_navigation_resume_to_navigation_payment_pix"
+            app:destination="@id/navigation_payment_pix" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_payment_pix"
+        android:name="br.com.acbr.acbrselfservice.ui.checkout.PaymentFragment"
+        android:label="@string/title_payment_pix"
+        tools:layout="@layout/fragment_payment_pix" />
+
+    <fragment
+        android:id="@+id/navigation_order"
+        android:name="br.com.acbr.acbrselfservice.ui.checkout.OrderFragment"
+        android:label="@string/title_order"
+        tools:layout="@layout/fragment_order" />
+</navigation>

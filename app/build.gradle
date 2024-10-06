@@ -1,0 +1,105 @@
+plugins {
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
+    id 'kotlin-kapt'
+}
+
+android {
+    namespace 'br.com.acbr.acbrselfservice'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "br.com.acbr.acbrselfservice"
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "0.0.1"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            debuggable true
+            buildConfigField "String", "CUSTOMER_API_URL", "\"https://customer.market-place.develop.boxdelivery.com.br\""
+        }
+        debug { // somente para desenvolvimento, não assina nem sobe pro crashlytics
+            debuggable true
+            buildConfigField "String", "CUSTOMER_API_URL", "\"https://customer.market-place.develop.boxdelivery.com.br\""
+            //buildConfigField "String", "CUSTOMER_API_URL", "\"http://localhost/127.0.0.1:9001/\""
+            //buildConfigField "String", "CUSTOMER_API_URL", "\"https://8461-2804-7f0-6783-282a-adfb-812d-482e-6180.ngrok.io/\""
+        }
+        hml { // somente para crashlytics
+            debuggable true
+            buildConfigField "String", "CUSTOMER_API_URL", "\"https://customer.market-place.develop.boxdelivery.com.br/\""
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
+        buildConfig true
+    }
+}
+
+android.applicationVariants.all { variant ->
+    variant.outputs.all {
+        outputFileName = "acbrSelfieService-${variant.name}-${variant.versionName}.apk"
+    }
+}
+
+dependencies {
+    def paging_version = "3.1.0"
+    def koin_version = "3.1.4"
+    implementation libs.androidx.navigation.fragment.ktx
+    implementation libs.androidx.navigation.ui.ktx
+
+    implementation libs.androidx.core.ktx
+    implementation libs.androidx.appcompat
+    implementation libs.material
+    implementation libs.androidx.activity
+    implementation libs.androidx.constraintlayout
+    testImplementation libs.junit
+    androidTestImplementation libs.androidx.junit
+    androidTestImplementation libs.androidx.espresso.core
+
+    implementation("androidx.room:room-runtime:2.6.1")
+//    annotationProcessor("androidx.room:room-compiler:2.4.0")
+    kapt("androidx.room:room-compiler:2.6.1")
+    //teste de conexão com a internet
+    //https://github.com/rommansabbir/NetworkX
+    implementation 'com.github.rommansabbir:NetworkX:4.2.0'
+    // login com Google
+    implementation 'com.google.android.gms:play-services-auth:21.2.0'
+    // retrofit
+    implementation libs.retrofit
+    implementation libs.converter.gson
+    implementation libs.adapter.rxjava2
+    implementation 'com.squareup.okhttp3:okhttp:4.9.1'
+    implementation libs.logging.interceptor
+    //Snack
+    //https://github.com/onurkagan/KSnack
+    //implementation 'com.github.onurkagan:KSnack:1.1.2'
+    implementation libs.picasso
+
+    // necessário para a administração da listagem infinita - carregamento automático de requisições paginadas
+    implementation "androidx.paging:paging-runtime:$paging_version"
+    // alternatively - without Android dependencies for tests
+    testImplementation "androidx.paging:paging-common:$paging_version"
+
+
+    // Koin Core features
+    implementation "io.insert-koin:koin-core:$koin_version"
+    // Koin Test features
+    testImplementation "io.insert-koin:koin-test:$koin_version"
+    // Koin for Android
+    implementation "io.insert-koin:koin-android:$koin_version"
+
+}

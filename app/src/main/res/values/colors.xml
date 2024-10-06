@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary brand color. -->
+    <color name="colorPrimary">@color/purple</color>
+    <color name="colorPrimaryDark">@color/purple_dark</color>
+    <color name="colorPrimaryVariant">@color/purple_dark</color>
+    <color name="colorOnPrimary">@color/white</color>
+    <!-- Secondary brand color. -->
+    <color name="colorSecondary">@color/teal_200</color>
+    <color name="colorSecondaryVariant">@color/teal_700</color>
+    <color name="colorOnSecondary">@color/black</color>
+
+    <color name="purple_200">#5BBAD1</color>
+    <color name="purple">#FF025468</color>
+    <color name="purple_700">#106D83</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="purple_dark">#003643</color>
+    <color name="snow_white">#FDFDFD</color>
+    <color name="torch_red">#FE0031</color>
+    <color name="soft_red">#CF6679</color>
+    <color name="soft_green">#76CF66</color>
+    <color name="green">#00702D</color>
+    <color name="yellow">#FAD853</color>
+    <color name="hard_yellow">#FACD48</color>
+    <color name="negro">#1A1A1A</color>
+    <color name="gray">#909090</color>
+    <color name="soft_gray">#BFBFBF</color>
+    <color name="very_soft_gray">#ECECEC</color>
+    <color name="small_purple">#037995</color>
+    <color name="transparent">#00FFFFFF</color>
+
+    <color name="background_primary">@color/snow_white</color>
+    <color name="background_warning">@color/torch_red</color>
+    <color name="text_category">#6F6F6F</color>
+    <color name="text_primary">@color/negro</color>
+    <color name="text_error">@color/soft_red</color>
+    <color name="divider">#88BFBFBF</color>
+    <color name="merchant_text_background">#ECECEC</color>
+    <color name="merchant_discount_background">#29782FFA</color>
+</resources>
