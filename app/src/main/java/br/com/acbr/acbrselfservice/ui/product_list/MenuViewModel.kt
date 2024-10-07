@@ -1,5 +1,7 @@
 package br.com.acbr.acbrselfservice.ui.product_list
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
@@ -12,6 +14,9 @@ import kotlinx.coroutines.flow.map
 class MenuViewModel(private val useCase: MenuUseCase) :  ViewModel(){
     private var currentQuery: String? = null
     private var currentSearchResult: Flow<PagingData<ProductUiListModel>>? = null
+
+    private var _showConfiguration = MutableLiveData<Boolean?>()
+    var showConfiguration: LiveData<Boolean?> = _showConfiguration
 
     fun productsFlow(search: String? = null, retry: Boolean = false): Flow<PagingData<ProductUiListModel>> {
         if (search == currentQuery && currentSearchResult != null && !retry) {
@@ -43,5 +48,11 @@ class MenuViewModel(private val useCase: MenuUseCase) :  ViewModel(){
             .cachedIn(viewModelScope)
         currentSearchResult = result
         return result
+    }
+
+    fun showConfiguration() {
+        useCase.showConfiguration { response ->
+            _showConfiguration.value = response
+        }
     }
 }

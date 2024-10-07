@@ -13,6 +13,16 @@
         <action
             android:id="@+id/action_navigation_merchant_menu_to_navigation_product"
             app:destination="@id/navigation_product" />
+        <action
+            android:id="@+id/action_navigation_merchant_menu_to_navigation_configuration"
+            app:destination="@id/navigation_configuration" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_configuration"
+        android:name="br.com.acbr.acbrselfservice.ui.configuration.ConfigurationFragment"
+        android:label="@string/title_configuration"
+        tools:layout="@layout/fragment_configuration" >
     </fragment>
 
     <fragment

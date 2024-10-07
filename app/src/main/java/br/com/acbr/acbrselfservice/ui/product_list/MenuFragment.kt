@@ -71,6 +71,8 @@ class MenuFragment : Fragment() {
         setResponseFetchProducts()
         setListener()
         fetchProducts(query)
+        menuViewModel.showConfiguration()
+        addObservers()
 
         binding.toolbarLayoutMerchant.setExpandedTitleColor(resources.getColor(R.color.black))
         binding.toolbarLayoutMerchant.setCollapsedTitleTextColor(resources.getColor(R.color.white))
@@ -104,6 +106,16 @@ class MenuFragment : Fragment() {
                 }
             }
         })
+    }
+
+    private fun addObservers() {
+        menuViewModel.showConfiguration.observe(viewLifecycleOwner) {
+            it?.let {
+                if(it){
+                    goToConfiguration()
+                }
+            }
+        }
     }
 
 
@@ -332,8 +344,13 @@ class MenuFragment : Fragment() {
         NavHostFragment.findNavController(this).navigateUp()
     }
 
+    private fun goToConfiguration(){
+        NavHostFragment.findNavController(this)
+            .navigate(R.id.action_navigation_merchant_menu_to_navigation_configuration)
+
+    }
+
     companion object {
-        const val ARG_MERCHANT = "merchant"
         private const val LAST_SEARCH_QUERY: String = "last_search_query"
     }
 

@@ -97,11 +97,9 @@ class ProductService {
     ): Resource<PaginationDto<ProductDto>>{
 //        try {
 //            val response = service.getProductsSync(
-//                merchantId,
 //                search,
 //                page,
-//                perPage,
-//                authorization
+//                perPage
 //            )
 //            return if (response.code() == 200) {//response.isSuccessful
 //                Resource(response.body(), "", ProcessStatus.Success)
@@ -138,10 +136,8 @@ class ProductService {
     ): Resource<PaginationDto<ProductDto>>{
 //        try {
 //            val response = service.getProductsByCategorySync(
-//                merchantId,
 //                page,
-//                perPage,
-//                authorization
+//                perPage
 //            )
 //            return if (response.code() == 200) {//response.isSuccessful
 //                Resource(response.body(), "", ProcessStatus.Success)

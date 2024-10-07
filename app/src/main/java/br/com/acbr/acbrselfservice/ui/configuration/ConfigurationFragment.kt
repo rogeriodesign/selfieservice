@@ -10,15 +10,17 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.NavHostFragment
 import br.com.acbr.acbrselfservice.R
-import br.com.acbr.acbrselfservice.databinding.FragmentMyProfileBinding
-import br.com.acbr.acbrselfservice.util.*
+import br.com.acbr.acbrselfservice.databinding.FragmentConfigurationBinding
+import br.com.acbr.acbrselfservice.util.ProcessStatus
+import br.com.acbr.acbrselfservice.util.ResourceStatus
+import br.com.acbr.acbrselfservice.util.UIFeedback
 import com.squareup.picasso.Picasso
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ConfigurationFragment : Fragment() {
     private val configurationViewModel: ConfigurationViewModel by viewModel()
 
-    private var _binding: FragmentMyProfileBinding? = null
+    private var _binding: FragmentConfigurationBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,7 +32,7 @@ class ConfigurationFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentMyProfileBinding.inflate(inflater, container, false)
+        _binding = FragmentConfigurationBinding.inflate(inflater, container, false)
         return binding.root
     }
 

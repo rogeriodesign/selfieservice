@@ -3,9 +3,11 @@ package br.com.acbr.acbrselfservice.ui.configuration
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import br.com.acbr.acbrselfservice.entity.ConfigurationData
 import br.com.acbr.acbrselfservice.util.ProcessStatus
 import br.com.acbr.acbrselfservice.util.ResourceStatus
+import kotlinx.coroutines.launch
 
 class ConfigurationViewModel (private val useCase: ConfigurationUseCase) : ViewModel() {
     private var _showProgress = MutableLiveData<Boolean?>()
@@ -20,36 +22,36 @@ class ConfigurationViewModel (private val useCase: ConfigurationUseCase) : ViewM
     private var _serverAddress = MutableLiveData<String>()
     var serverAddress: LiveData<String> = _serverAddress
 
-    private var _configuration = MutableLiveData<ConfigurationData>()
-    var configuration: LiveData<ConfigurationData> = _configuration
+    private var _configuration = MutableLiveData<ConfigurationData?>()
+    var configuration: LiveData<ConfigurationData?> = _configuration
 
 
     init {
-        getServerAddress{
-            _serverAddress.value = it
-        }
+        _serverAddress.value = getServerAddress()
         getConfiguration {
             _configuration.value = it
         }
     }
 
-
     fun saveServerAddress(address: String, onPostExecute: (Boolean?) -> Unit) = useCase.saveServerAddress(address, onPostExecute)
 
-    private fun getServerAddress(onPostExecute: (String?) -> Unit) = useCase.getServerAddress(onPostExecute)
-
-    fun saveConfiguration(configuration: ConfigurationData, onPostExecute: (Boolean) -> Unit) = useCase.saveConfiguration(configuration, onPostExecute)
+    private fun getServerAddress() = useCase.getServerAddress()
 
     private fun getConfiguration(onPostExecute: (ConfigurationData) -> Unit) = useCase.getConfiguration(onPostExecute)
 
     fun updateProfile(){
-        _showProgress.value = true
-        useCase.updateConfiguration{
+        viewModelScope.launch {
+            _showProgress.value = true
+            val response = useCase.updateConfiguration()
             _showProgress.value = false
-            when (it.status){
-                ProcessStatus.Success -> {  }
-                ProcessStatus.Fail -> { _toastError.value = ResourceStatus(it.message, ProcessStatus.Fail) }
-                ProcessStatus.SaveFail -> { _toastError.value = ResourceStatus(it.message, ProcessStatus.SaveFail) }
+            when (response.status){
+                ProcessStatus.Success -> {
+                    if(response.data != null) {
+                        _configuration.value = response.data
+                    }
+                }
+                ProcessStatus.Fail -> { _toastError.value = ResourceStatus(response.message, ProcessStatus.Fail) }
+                ProcessStatus.SaveFail -> { _toastError.value = ResourceStatus(response.message, ProcessStatus.SaveFail) }
                 ProcessStatus.FailExternalAPI -> {}
                 ProcessStatus.MissingParameter -> {}
             }

@@ -11,17 +11,6 @@ data class PaginationDto<T> (
     @SerializedName("total") val total: Int?
 )
 
-data class TokenResponseDto(
-    @SerializedName("access_token") val accessToken: String,
-    @SerializedName("expires_in") val expiresIn: Long,
-    @SerializedName("refresh_token") val refreshToken: String,
-    @SerializedName("refresh_expires_in") val refreshExpiresIn: Long,
-    @SerializedName("token_type") val tokenType: String, //"Bearer",
-    @SerializedName("not-before-policy") val notBeforePolicy: Long? = null, // 300
-    @SerializedName("session_state") val session_state: String? = null, //"f1e6d42a-484e-4c25-928c-827c0c4f3f6e"
-    @SerializedName("scope") val scope: String? = null //"profile"
-)
-
 data class PriceDto (
     @SerializedName("original_value") val originalValue: Double? = null,//20
     @SerializedName("value") val value: Double? = null//20

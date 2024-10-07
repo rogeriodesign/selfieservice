@@ -1,7 +1,7 @@
 package br.com.acbr.acbrselfservice.di
 
-import br.com.acbr.acbrselfservice.repository.authentication.AuthenticationRepository
-import br.com.acbr.acbrselfservice.repository.authentication.service.AuthenticationService
+import br.com.acbr.acbrselfservice.repository.store_data.StoreDataRepository
+import br.com.acbr.acbrselfservice.repository.store_data.service.StoreDataService
 import br.com.acbr.acbrselfservice.repository.cart.CartRepository
 import br.com.acbr.acbrselfservice.repository.cart.service.CartService
 import br.com.acbr.acbrselfservice.repository.configuration.ConfigurationRepository
@@ -15,6 +15,8 @@ import br.com.acbr.acbrselfservice.ui.cart.CartUseCase
 import br.com.acbr.acbrselfservice.ui.cart.CartViewModel
 import br.com.acbr.acbrselfservice.ui.checkout.resume.ResumeUseCase
 import br.com.acbr.acbrselfservice.ui.checkout.resume.ResumeViewModel
+import br.com.acbr.acbrselfservice.ui.configuration.ConfigurationUseCase
+import br.com.acbr.acbrselfservice.ui.configuration.ConfigurationViewModel
 import br.com.acbr.acbrselfservice.ui.home.HomeUseCase
 import br.com.acbr.acbrselfservice.ui.home.HomeViewModel
 import br.com.acbr.acbrselfservice.ui.product_list.MenuUseCase
@@ -30,23 +32,24 @@ import org.koin.dsl.module
 
 object DependencyModule {
     val moduleApp = module {
-        single<AuthenticationService> { AuthenticationService() }
+        single<StoreDataService> { StoreDataService() }
         single<ProductService> { ProductService() }
         single<ConfigurationRepository> { ConfigurationRepository(androidContext()) }
         single<CartService> { CartService() }
         single<MeService> { MeService() }
         single<OrderService> { OrderService() }
 
-        factory { AuthenticationRepository(get<AuthenticationService>()) }
+        factory { StoreDataRepository(get<StoreDataService>(), get<ConfigurationRepository>()) }
         factory { ProductRepository(get<ProductService>()) }
         factory { CartRepository(androidContext()) }
         factory { ProfileRepository(androidContext(), get<MeService>()) }
-        factory { MenuUseCase(get<ProductRepository>()) }
+        factory { MenuUseCase(get<ProductRepository>(), get<ConfigurationRepository>()) }
         factory { ProductUseCase(get<ProductRepository>(), get<CartRepository>()) }
         factory { CartUseCase(get<CartRepository>()) }
         factory { HomeUseCase(get<CartRepository>()) }
         factory { OrderRepository(get<OrderService>()) }
         factory { ResumeUseCase(get<OrderRepository>()) }
+        single<ConfigurationUseCase> { ConfigurationUseCase(get<ConfigurationRepository>(), get<StoreDataRepository>()) }
 
         //factory { SplashUseCase(get<ConfigurationRepository>(), get<OauthRepository>()) }
         single<SplashContract.UseCase> { SplashUseCase() }
@@ -57,5 +60,6 @@ object DependencyModule {
         viewModel { HomeViewModel(get()) }
         viewModel { SplashViewModel(get()) }
         viewModel { ResumeViewModel(get()) }
+        viewModel { ConfigurationViewModel(get()) }
     }
 }

@@ -135,4 +135,7 @@
     <string name="label_payment">Continuar</string>
     <string name="title_payment_pix">Pagamento</string>
     <string name="title_self_attendance">Auto atendimento</string>
+    <string name="title_configuration">Configuração</string>
+    <string name="btn_save">Salvar</string>
+    <string name="btn_update">Atualizar</string>
 </resources>

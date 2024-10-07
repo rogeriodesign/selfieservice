@@ -42,19 +42,15 @@ interface IProductService {
 
     @GET("/v1/merchants/{merchantId}/products")
     suspend fun getProductsSync(
-        @Path("merchantId") merchantId: String,
         @Query("search") search: String?,
         @Query("page") page: Int,
-        @Query("perPage") perPage: Int,
-        @Header("Authorization") authorization: String
+        @Query("perPage") perPage: Int
     ): Response<PaginationDto<ProductDto>>
 
     @GET("/v1/merchants/{merchantId}/products/sort-by-category")
     suspend fun getProductsByCategorySync(
-        @Path("merchantId") merchantId: String,
         @Query("page") page: Int,
         @Query("perPage") perPage: Int,
-        @Header("Authorization") authorization: String
     ): Response<PaginationDto<ProductDto>>
 
     @GET("/v1/merchants/{merchantId}/products/{productId}")

@@ -2,7 +2,7 @@ package br.com.acbr.acbrselfservice.repository
 
 import android.util.Log
 import br.com.acbr.acbrselfservice.MyApplication
-import br.com.acbr.acbrselfservice.repository.authentication.service.IAuthenticationCodeService
+import br.com.acbr.acbrselfservice.repository.store_data.service.IStoreDataService
 import br.com.acbr.acbrselfservice.repository.cart.service.ICartService
 import br.com.acbr.acbrselfservice.repository.order.service.IOrderService
 import br.com.acbr.acbrselfservice.repository.product.service.IProductService
@@ -21,8 +21,8 @@ class RestGenericService (private val timeCache: Int = 300, private val timeOut:
 
 
 
-    fun getAuthenticationService(): IAuthenticationCodeService {
-        return restInit(ExternalRoutes.customer, timeCache, timeOut).create(IAuthenticationCodeService::class.java)
+    fun getStoreDataService(rote: String): IStoreDataService {
+        return restInit(rote, timeCache, timeOut).create(IStoreDataService::class.java)
     }
 
     fun getMeService(): IMeService {

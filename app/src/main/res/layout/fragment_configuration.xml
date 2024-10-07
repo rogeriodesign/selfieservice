@@ -36,26 +36,89 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/et_ip"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/activity_horizontal_margin"
             android:layout_marginTop="24dp"
-            android:layout_marginEnd="@dimen/activity_vertical_margin"
+            android:layout_marginEnd="8dp"
             android:animateLayoutChanges="true"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:visibility="gone"
+            tools:visibility="visible"
+            app:layout_constraintEnd_toStartOf="@id/bt_update_address"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_edit_profile_title">
+            app:layout_constraintTop_toBottomOf="@id/tv_edit_profile_title">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/ti_ip"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
                 android:hint="IP ou endereço do servidor"
                 android:inputType="text"
                 android:maxLines="1"
                 android:textSize="16sp" />
         </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/bt_update_address"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Alterar"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:layout_marginRight="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_address" />
+
+        <TextView
+            android:id="@+id/tv_address"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:paddingVertical="14dp"
+            android:paddingHorizontal="32dp"
+            android:textSize="16sp"
+            android:text="Nenhum endereço definido"
+            app:layout_constraintEnd_toStartOf="@id/bt_save"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_edit_profile_title"/>
+
+        <Button
+            android:id="@+id/bt_save"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_save"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:visibility="gone"
+            tools:visibility="visible"
+            android:layout_marginRight="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_address" />
+
+
+        <CheckBox
+            android:id="@+id/cb_ticket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Emite Nota Fiscal"
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bt_save" />
+
+        <TextView
+            android:id="@+id/tv_title_service"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/activity_vertical_margin"
+            android:layout_marginTop="42dp"
+            android:text="Dados do cliente"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cb_ticket" />
 
         <ImageView
             android:id="@+id/iv_background_image"
@@ -66,7 +129,7 @@
             android:layout_marginTop="32dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_ip" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_title_service" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_merchant_logo"
@@ -86,6 +149,21 @@
                 app:srcCompat="@drawable/ic_default_background" />
 
         </androidx.cardview.widget.CardView>
+
+        <Button
+            android:id="@+id/bt_update"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_update"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:layout_marginTop="62dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_background_image"/>
+
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
